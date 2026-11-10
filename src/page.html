@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Compare preços e consulte cupons e encartes de lojas brasileiras.">
+<meta name="theme-color" content="#f4f7f5"><title>Garimpo de Preços</title>
+<style>/*STYLES*/</style>
+</head>
+<body>
+<header class="top"><div class="wrap top-inner"><a class="brand" href="#comparar"><span class="brand-icon" data-icon="brand"></span><span>garimpo<span class="brand-accent">.</span><small>DE PREÇOS</small></span></a>
+<nav aria-label="Menu principal"><a href="#comparar" data-page="comparar"><span data-icon="search"></span> Comparar</a><a href="#descontos" data-page="descontos"><span data-icon="ticket"></span> Descontos</a></nav><button type="button" id="push-menu" class="push-menu" aria-expanded="false" aria-controls="push-invite"><span data-icon="bell"></span> Alertas</button><span class="country"><span></span> Brasil · BRL</span></div></header>
+<main class="wrap">
+<section id="push-invite" class="push-invite" aria-labelledby="push-title" hidden>
+  <div class="push-icon" data-icon="bell"></div>
+  <div class="push-copy"><h2 id="push-title">Receba alertas de novos cupons</h2><p id="push-status" role="status"></p></div>
+  <div class="push-actions"><button type="button" id="push-action" class="action" hidden>Ativar alertas</button><button type="button" id="push-dismiss">Agora não</button></div>
+</section>
+<section id="comparar" class="page">
+<div class="hero">
+<div class="hero-content">
+<div class="eyebrow"><span data-icon="spark"></span> COMPARADOR DE PREÇOS</div>
+<h1>Encontre o produto.<br><em>Compare as ofertas.</em></h1>
+<p>Veja os preços por loja e escolha a versão certa antes de comprar.</p>
+<form id="search-form" role="search"><label for="query">O que você quer encontrar?</label><div class="search-field"><span class="search-icon" data-icon="search"></span><input id="query" name="q" type="search" aria-describedby="search-hint" maxlength="120" minlength="2" placeholder="Ex.: Micro-ondas Philco 20 L" required><button type="submit">Buscar <span data-icon="arrow"></span></button></div><p id="search-hint">Use a marca, o modelo ou a capacidade para refinar a busca.</p></form>
+</div>
+<div class="hero-guide"><div class="guide-icon" data-icon="trend"></div><h2>Compare a mesma versão</h2><p>Veja as ofertas lado a lado dentro de cada card.</p><ul><li><span data-icon="check"></span> Confira cor e voltagem</li><li><span data-icon="check"></span> Veja o preço de cada loja</li><li><span data-icon="check"></span> Confirme o frete no site da loja</li></ul></div>
+</div>
+<div class="suggestions"><span>Buscas rápidas</span><button type="button" data-query="Micro-ondas"><span data-icon="box"></span> Micro-ondas</button><button type="button" data-query="iPhone"><span data-icon="phone"></span> iPhone</button><button type="button" data-query="Cafeteira"><span data-icon="cup"></span> Cafeteira</button><button type="button" data-query="Jogo de cama"><span data-icon="bed"></span> Jogo de cama</button></div>
+<section id="results" aria-labelledby="result-title" hidden>
+<div class="section-head"><div><div class="kicker">RESULTADOS DA BUSCA</div><h2 id="result-title" tabindex="-1"></h2></div><label id="order-box" hidden>Ordenar <select id="order"><option value="price">Menor preço</option><option value="desc">Maior preço</option></select></label></div>
+<p id="result-status" class="subtle" role="status"></p>
+<form id="search-filters" class="search-filters" hidden>
+<div class="filter-title"><strong><span data-icon="filter"></span> Filtrar ofertas</strong><button type="reset" class="filter-clear">Limpar</button></div>
+<div class="filter-fields">
+<label for="result-store">Loja<select id="result-store" name="store"></select></label>
+<label for="result-variant">Versão<select id="result-variant" name="variant"></select></label>
+<label for="price-min">Preço mínimo (R$)<input id="price-min" name="min" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Sem mínimo"></label>
+<label for="price-max">Preço máximo (R$)<input id="price-max" name="max" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Sem máximo"></label>
+<button type="submit" class="filter-apply">Aplicar filtros</button>
+</div>
+</form>
+<p id="filter-status" class="subtle" role="status" hidden></p>
+<div id="marketplace-links" class="marketplace-links" aria-label="Consulta por loja"></div>
+<div id="offer-list" class="product-list"></div>
+<details id="store-search" class="direct"><summary>Buscar diretamente nas lojas</summary><p class="subtle">Abra a busca da loja para consultar o catálogo, o estoque e o frete para seu CEP.</p><div id="direct-list" class="direct-list"></div></details>
+</section>
+<section id="home-products" aria-labelledby="products-title">
+<div class="section-head"><div><div class="kicker">VITRINE DO GARIMPO</div><h2 id="products-title">Produtos para comparar</h2></div><span class="catalog-chip"><span data-icon="trend"></span> Preços por loja</span></div>
+<p id="home-status" class="subtle" role="status">Buscando preços e fotos nos catálogos das lojas…</p>
+<div class="product-grid" id="product-grid"></div>
+<button type="button" id="reload-home" class="reload-home" hidden>Tentar novamente</button>
+</section>
+<section id="home-stores"><div class="section-head"><div><div class="kicker">GUIA DE LOJAS</div><h2>Grandes lojas em um só lugar</h2></div><a class="text-link" href="#descontos">Ver descontos <span data-icon="arrow"></span></a></div><div id="brand-list" class="brands"></div></section>
+<div class="info"><span class="info-icon" data-icon="info"></span><div><strong>Compare a mesma versão do produto</strong><p>Confira modelo, voltagem, tamanho e condição antes de comprar. Frete e cupons podem mudar o total no carrinho.</p></div></div>
+</section>
+<section id="descontos" class="page" hidden>
+<div class="discount-hero"><div><div class="eyebrow"><span data-icon="ticket"></span> CENTRAL DE ECONOMIA</div><h1>Descontos<span class="brand-accent">.</span></h1><p>Cupons, promoções e encartes das grandes lojas brasileiras.</p></div><div class="coupon-art" aria-hidden="true">%</div></div>
+<div class="section-head discount-head"><div><div class="kicker">GARIMPO DE OFERTAS</div><h2>Cupons e promoções</h2></div><label class="sr" for="store-filter">Filtrar por loja</label><select id="store-filter"><option value="">Todas as lojas</option></select></div>
+<div class="tabs" aria-label="Filtrar por tipo"><button data-kind="" aria-pressed="true">Todos</button><button data-kind="Cupom" aria-pressed="false">Cupons</button><button data-kind="Promoção" aria-pressed="false">Promoções</button><button data-kind="Encarte" aria-pressed="false">Encartes</button></div>
+<p class="subtle" id="coupon-status" role="status"></p><div id="coupons" class="coupons"></div>
+<div class="info"><span class="info-icon" data-icon="info"></span><div><strong>Confira as regras na loja</strong><p>Cupons podem depender da conta, do app ou do estoque. Encartes variam por unidade e região.</p></div></div>
+</section>
+</main>
+<footer><div class="wrap footer-inner"><span><strong>garimpo<span class="brand-accent">.</span></strong> &nbsp; Comparador de preços e guia de descontos</span><span>Feito para compras no Brasil</span></div></footer>
+<div id="toast" role="status" hidden></div>
+<script>/*SCRIPT*/</script>
+</body></html>
